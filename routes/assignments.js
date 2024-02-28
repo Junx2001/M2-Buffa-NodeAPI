@@ -15,10 +15,17 @@ function getAssignments(req, res){
 function getAssignment(req, res){
     let assignmentId = req.params.id;
 
-    Assignment.findOne({id: assignmentId}, (err, assignment) =>{
-        if(err){res.send(err)}
+    Assignment.findById(assignmentId, (err, assignment) => {
+        if(err){
+            res.send(err)
+        }
         res.json(assignment);
     })
+
+    // Assignment.findOne({id: assignmentId}, (err, assignment) =>{
+    //     if(err){res.send(err)}
+    //     res.json(assignment);
+    // })
 }
 
 // Ajout d'un assignment (POST)
